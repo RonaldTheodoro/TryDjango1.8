@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+static_in_env/
+static_in_pro/
+.env
+variable.txt
+*.sqlite3
+*.sublime-project
+*.sublime-workspace
