@@ -1,5 +1,5 @@
 from django import forms
-from .models import SignUp
+from .models import SignUp, User
 
 
 class ContactForm(forms.Form):
@@ -20,3 +20,20 @@ class SignUpForm(forms.ModelForm):
 
     def cleanFullName(self):
         return self.cleaned_data.get('full_name')
+
+
+class UserForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['name', 'email', 'password']
+
+    def cleanName(self):
+        return self.cleaned_data.get('name')
+
+    def cleanEmail(self):
+        return self.cleaned_data.get('email')
+
+    def cleanPassword(self):
+        return self.cleaned_data.get('password')
+

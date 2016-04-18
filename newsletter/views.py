@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render
-from .forms import SignUpForm, ContactForm
+from .forms import SignUpForm, ContactForm, UserForm
 
 
 def home(request):
@@ -49,3 +49,16 @@ def contact(request):
         'title': 'Contato'
     }
     return render(request, 'form.html', context)
+
+
+def login(request):
+    form = UserForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+
+    context = {
+        'title': 'Log in',
+        'form': form
+    }
+    return render(request, 'login.html', context)
